@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/5.6.3/css/all.min.css}"/>
+        
+    </head>
+    <body>
+        <div th:replace="fragments/header::header">Header</div>
+        <div class="container col-xl-9" >
+            <h1 class="btn btn-primary"> <span class="fa fa-home"></span> &nbsp; SONSO.ORG</h1>
+            <h1>Hello - this is view Staff</h1>
+            <hr/>
+            <a th:href="${'/staffs/add'}" class="btn btn-success">Add new Staff </a>
+            <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">IdStaff</th>
+                            <th scope="col">NameStaff</th>
+                            <th scope="col">Gender</th>
+                            <th scope="col">Birthday</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Salary</th>
+                            <th scope="col">Note</th>
+                            <th scope="col">IdDepartment</th>
+                            <th scope="col">#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="staff: ${staffs}">
+                            <td th:text="${staff.idStaff}"></td>
+                            <td th:text="${staff.nameStaff}"></td>
+                            <td th:text="${staff.gender}"></td>
+                            <td th:text="${staff.birthday}"></td>
+                            <td th:text="${staff.phone}"></td>
+                            <td th:text="${staff.email}"></td>
+                            <td th:text="${staff.salary}"></td>
+                            <td th:text="${staff.note}"></td>
+                            <td th:text="${staff.department.nameDepartment}"></td>
+                            <td>
+                                <a th:href="${'/staffs/edit/' + staff.idStaff}">Edit</a>
+                                <a th:href="${'/staffs/delete/' + staff.idStaff}">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </thead>
+            </table>
+        </div>
+        <!--<div th:replace="fragments/footer::footer">Footer</div>-->
+        
+        <script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper/js/1.14.6/umd/popper.min.js}"></script>
+    </body>
+</html>

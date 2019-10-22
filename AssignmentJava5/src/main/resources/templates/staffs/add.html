@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/5.6.3/css/all.min.css}"/>
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Hello - this is add staff</h1>
+            <hr/>
+            <form  th:object="${staff}" th:action="@{/staffs/add}" method="post">
+                <div class="form-group">
+                    <label for="idStaff">IDSTAFF:</label>
+                    <input type="text" th:field="*{idStaff}" class="form-control"><br>
+                            <small th:if="${#fields.hasErrors('idStaff')}"
+                                   class=" form-text text-muted alert alert-danger"
+                                   th:errors="*{idStaff}">idStaff Error</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="nameStaff">NAMESTAFF:</label>
+                                <input type="text" th:field="*{nameStaff}" class="form-control">
+                                    <small th:if="${#fields.hasErrors('nameStaff')}"
+                                           class="form-text text-muted alert alert-danger"
+                                           th:errors="*{nameStaff}">nameStaff Error</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">GENDER</label>
+                                <input type="text" th:field="*{gender}" class="form-control" >
+                                    <small th:if="${#fields.hasErrors('gender')}"
+                                           class="form-text text-muted alert alert-danger"
+                                           th:errors="*{gender}">gender Error</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="birthday">BIRTHDAY:</label>
+                                <input type="text" th:field="*{birthday}" class="form-control" >
+                                    <small th:if="${#fields.hasErrors('birthday')}"
+                                           class="form-text text-muted alert alert-danger"
+                                           th:errors="*{birthday}">birthday Error</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">PHONE</label>
+                                <input type="text" th:field="*{phone}" class="form-control" >
+                                    <small th:if="${#fields.hasErrors('phone')}"
+                                           class="form-text text-muted alert alert-danger"
+                                           th:errors="*{phone}">phone Error</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">EMAIL</label>
+                                <input type="email" th:field="*{email}" class="form-control" >
+                                    <small th:if="${#fields.hasErrors('email')}"
+                                           class="form-text text-muted alert alert-danger"
+                                           th:errors="*{email}">email Error</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="salary">SALARY</label>
+                                <input type="text" th:field="*{salary}" class="form-control" >
+                                    <small th:if="${#fields.hasErrors('salary')}"
+                                           class="form-text text-muted alert alert-danger"
+                                           th:errors="*{salary}">salary Error</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="note">NOTE</label>
+                                <input type="text" th:field="*{note}" class="form-control" >
+                                    <small th:if="${#fields.hasErrors('note')}"
+                                           class="form-text text-muted alert alert-danger"
+                                           th:errors="*{note}">note Error</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="idDepartment">IDDEPARTMENT</label>
+                                <select class="form-control" id="exampleFormControlSelect1" name="idDepartment">
+                                    <th:block th:each="item: ${department}">
+                                        <option th:text="${item.nameDeprtment}" th:value="${item.idDepartment}">1</option>
+                                    </th:block>
+                                </select>
+                            </div>
+
+                            <input type="submit" name="Add New" class="btn btn-warning">
+                                </form>
+
+                                <a th:href="${'/staffs/view'}" class="btn btn-info">List All Users</a>
+                                </div>
+
+                                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+                                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+                                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+                                </body>
+                                </html>

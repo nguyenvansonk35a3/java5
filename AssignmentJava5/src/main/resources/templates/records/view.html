@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/5.6.3/css/all.min.css}"/>
+    </head>
+    
+    <body>
+        <div th:replace="fragments/header::header">Header</div>
+        <div class="container">
+            <h1 class="btn btn-primary"> <span class="fa fa-home"></span> &nbsp; SONSO.ORG</h1>
+            <h1>hello - this is view department</h1>
+            <hr/>
+            <a th:href="${'/records/add'}" class="btn btn-success">Add new Department</a>
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">IdRecord</th>
+                        <th scope="col">type</th>
+                        <th scope="col">reason</th>
+                        <th scope="col">date</th>
+                        <th scope="col">idStaff</th>
+                        <th scope="col">#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="record: ${records}">
+                        <td th:text="${record.idRecord}"></td>
+                        <td th:text="${record.type}"></td>
+                        <td th:text="${record.reason}"></td>
+                        <td th:text="${record.date}"></td>
+                        <!--<td th:text="${record.idStaff}"></td>-->
+                        <td th:text="${record.staff.nameStaff}"></td>
+                        <td>
+                            <a th:href="${'/records/edit/' + record.idRecord}" >Edit</a>
+                            <a th:href="${'/records/delete/' + record.idRecord}">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper/js/1.14.6/umd/popper.min.js}"></script>
+    </body>
+</html>
